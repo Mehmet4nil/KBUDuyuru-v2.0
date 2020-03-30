@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:tools="http://schemas.android.com/tools"
+      tools:showIn="navigation_view">
+
+    <item android:title="Duyuru Sayfaları">
+        <menu>
+            <item
+                android:id="@+id/home"
+                android:icon="@drawable/ic_menu_ann"
+                android:title="Ana Sayfa"/>
+            <item
+                android:id="@+id/muhendislik"
+                android:icon="@drawable/ic_menu_ann"
+                android:title="Mühendislik Fakültesi"/>
+            <item
+                android:id="@+id/mimarlik"
+                android:icon="@drawable/ic_menu_ann"
+                android:title="Mimarlık Fakültesi"/>
+            <item
+                android:id="@+id/ilahiyat"
+                android:icon="@drawable/ic_menu_ann"
+                android:title="İlahiyat Fakültesi"/>
+        </menu>
+    </item>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Share"/>
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Send"/>
+        </menu>
+    </item>
+
+</menu>
