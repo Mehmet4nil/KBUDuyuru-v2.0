@@ -9,6 +9,7 @@
     tools:showIn="@layout/app_bar_nav_drawer">
 
     <ListView
+        android:id="@+id/listDuyuru"
         android:layout_width="wrap_content"
         android:layout_height="648dp"
         android:layout_marginTop="8dp"

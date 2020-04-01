@@ -12,11 +12,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
 import android.widget.TextView;
 
 public class NavDrawerActivity extends AppCompatActivity
 		implements NavigationView.OnNavigationItemSelectedListener {
-
+    public static ListView listDuyuru;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -41,6 +42,9 @@ public class NavDrawerActivity extends AppCompatActivity
 
 		NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
 		navigationView.setNavigationItemSelectedListener(this);
+
+        listDuyuru = findViewById(R.id.listDuyuru);
+        new DuyuruTask(this).execute();
 	}
 
 	@Override
