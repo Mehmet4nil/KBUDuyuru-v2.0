@@ -33,14 +33,17 @@ public class DuyuruTask extends AsyncTask<Void, Void, Void>{
     @Override
     protected Void doInBackground(Void... params) {
         // TODO Auto-generated method stub
-        String address, phone;
+        String tarih, phone;
         Document doc;
-        String url = "https://www.nobetcieczanebul.com/bursa-nobetci-eczane";
+        //String url = "https://www.nobetcieczanebul.com/bursa-nobetci-eczane";
+        //String url = "https://www.karabuk.edu.tr/duyurular/";
+        String url = "http://muh.karabuk.edu.tr/index.php?page=announcements";
+        int i2 = 1;
 
         try {
             duyuruItems.remove(duyuruItems);
             doc = Jsoup.connect(url).ignoreContentType(true).get();
-            for (Element row : doc.select("div.col")) {
+            /*for (Element row : doc.select("div.col")) {
                 Elements header = row.select("div.card-header");
                 Elements body = row.select("div.card-body");
                 address = body.text().substring(0, body.text().indexOf("©"));
@@ -48,7 +51,33 @@ public class DuyuruTask extends AsyncTask<Void, Void, Void>{
                 DuyuruModel item = new DuyuruModel(header.text(), address, phone);
                 duyuruItems.add(item);
                 duyuru = header.text();
+            }*/
+            Elements ele = doc.select("div#main");
+            Elements table = ele.select("table");
+            //Elements rows = table.select("tr");
+            Elements cols = table.select("tr[align=left]");
+            //Elements colTime = table.select("tr");
+            for(Element aTitle : cols.select("a.duyuru")){  // Listede gösterilen duyuru başlıklarını alır
+                Elements dSayi = table.select("tr.duyurutd"); // Duyuru listesindeki duyuru sayısını çeker
+                Elements a = cols.select("a[href]");// Listede gösterilen duyuru linklerini alır
+                //Elements aTitle = cols.select("a.duyuru");// Listede gösterilen duyuru başlıklarını alır
+                Elements p = dSayi.select("p");// Listedeki duyuru tarihlerini alır
+
+                DuyuruModel item = new DuyuruModel(aTitle.text(), p.get(i2).text());
+                duyuruItems.add(item);
+                duyuru = aTitle.text();
+                i2 += 3;
             }
+
+
+           /*
+            Elements row = doc.select("div.haberYaziTxt");
+        for (Element header : row.select("li")) {
+            Elements aTitle = header.select("a");
+            DuyuruModel item = new DuyuruModel(aTitle.text());
+            duyuruItems.add(item);
+            duyuru = aTitle.text();
+        } */
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -20,6 +20,7 @@ public class DuyuruAdapter extends BaseAdapter{
     }
     private class ViewHolder {
         TextView txtTitle;
+        TextView txtTarih;
     }
 
     @Override
@@ -32,6 +33,7 @@ public class DuyuruAdapter extends BaseAdapter{
             convertView = mInflater.inflate(R.layout.item_duyuru, null);
             holder = new ViewHolder();
             holder.txtTitle = convertView.findViewById(R.id.txtDuyuru);
+            holder.txtTarih = convertView.findViewById(R.id.txtTarih);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
@@ -40,6 +42,7 @@ public class DuyuruAdapter extends BaseAdapter{
         final DuyuruModel rowItem = (DuyuruModel) getItem(position);
 
         holder.txtTitle.setText(rowItem.getTitle());
+        holder.txtTarih.setText(rowItem.getTarih());
         return convertView;
     }
 
